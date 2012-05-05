@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Class-Path: primary-source-1.0.jar 
+ lib/spring-beans-3.0.1.RELEASE.jar 
+ lib/spring-core-3.0.1.RELEASE.jar 
+ lib/spring-asm-3.0.1.RELEASE.jar 
+ lib/commons-logging-1.1.1.jar 
+ lib/spring-context-3.0.1.RELEASE.jar 
+ lib/spring-aop-3.0.1.RELEASE.jar 
+ lib/aopalliance-1.0.jar 
+ lib/spring-expression-3.0.1.RELEASE.jar 
+ lib/spring-context-support-3.0.1.RELEASE.jar 
+ lib/spring-test-3.0.1.RELEASE.jar 
+ lib/spring-web-3.0.1.RELEASE.jar 
+ lib/jcl-over-slf4j-1.5.8.jar 
+ lib/slf4j-api-1.5.8.jar 
+ lib/slf4j-simple-1.5.8.jar 
+ lib/spring-webmvc-3.0.1.RELEASE.jar
+

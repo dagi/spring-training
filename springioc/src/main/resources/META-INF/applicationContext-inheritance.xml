@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+           
+    <bean id="sharedBeanDefinition" abstract="true">
+        <property name="sharedProperty" value="foo" />
+    </bean>
+    
+    <bean class="cz.sweb.pichlik.springioc.inheritance.BeanA" parent="sharedBeanDefinition">
+        <property name="specificPropertyX" value="x"/>
+    </bean>
+    
+    <bean class="cz.sweb.pichlik.springioc.inheritance.BeanB" parent="sharedBeanDefinition">
+        <property name="specificPropertyY" value="y"/>
+    </bean>
+</beans>

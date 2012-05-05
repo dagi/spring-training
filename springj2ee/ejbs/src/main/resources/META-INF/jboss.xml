@@ -1,0 +1,8 @@
+<jboss>
+	<enterprise-beans>
+		<session>
+			<ejb-name>ReservationServiceEJBFacade</ejb-name>
+			<local-jndi-name>ejb/ReservationService</local-jndi-name>
+		</session>
+	</enterprise-beans>
+</jboss>

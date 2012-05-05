@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:context="http://www.springframework.org/schema/context"
+           xmlns:mvc="http://www.springframework.org/schema/mvc"
+           xmlns:util="http://www.springframework.org/schema/util"
+           xsi:schemaLocation="http://www.springframework.org/schema/beans classpath:/org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+                               http://www.springframework.org/schema/context classpath:/org/springframework/context/config/spring-context-3.0.xsd
+                               http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+                               http://www.springframework.org/schema/mvc classpath:/org/springframework/web/servlet/config/spring-mvc-3.0.xsd">
+
+    <mvc:annotation-driven/>
+
+    <context:component-scan base-package="cz.sweb.pichlik.springmvc"/>
+
+    <!--
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+
+    <bean class="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator"/>
+    -->
+    
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"> 
+        <property name="mediaTypes">
+            <map> 
+                <entry key="json" value="application/json"/>
+            </map>
+        </property> 
+        <property name="viewResolvers">
+        <list> 
+            <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/> 
+        </list>
+        </property>
+        <property name="defaultViews">
+        <list> <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+        </list> </property>
+</bean>
+
+    <bean id="viewResolver"
+      class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+</beans>

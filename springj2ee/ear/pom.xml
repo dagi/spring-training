@@ -1,0 +1,43 @@
+<project>
+   <modelVersion>4.0.0</modelVersion>
+   
+   <parent>
+      <groupId>cz.sweb.pichlik.springj2ee</groupId>
+      <artifactId>project</artifactId>
+      <version>1.0</version>
+   </parent>
+   
+   <groupId>cz.sweb.pichlik.springj2ee</groupId>
+   <artifactId>ear</artifactId>
+   <packaging>ear</packaging>
+   <version>1.0</version>
+   <name>ear assembly</name>
+
+   <dependencies>
+      <dependency>
+         <groupId>cz.sweb.pichlik.springj2ee</groupId>
+         <artifactId>ejbs</artifactId>
+         <type>ejb</type>
+      </dependency>
+      <dependency>
+         <groupId>cz.sweb.pichlik.springj2ee</groupId>
+         <artifactId>servlet</artifactId>
+         <type>war</type>
+      </dependency>
+      <dependency>
+         <groupId>cz.sweb.pichlik.springj2ee</groupId>
+         <artifactId>primary-source</artifactId>
+      </dependency>
+   </dependencies>
+   <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-ear-plugin</artifactId>
+        <configuration>
+          <defaultJavaBundleDir>lib/</defaultJavaBundleDir>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+    
+</project>

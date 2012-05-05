@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:si="http://www.springframework.org/schema/integration"
+       xmlns:file="http://www.springframework.org/schema/integration/file"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/integration
+            http://www.springframework.org/schema/integration/spring-integration-1.0.xsd
+            http://www.springframework.org/schema/integration/file
+            http://www.springframework.org/schema/integration/file/spring-integration-file-1.0.xsd">
+
+	<si:channel id="input"></si:channel>	
+	<si:channel id="string"></si:channel>
+    <si:channel id="integer"></si:channel>
+    
+    <si:service-activator input-channel="string" ref="stringLogger" method="toLog" />
+    <si:service-activator input-channel="integer" ref="integerLogger" method="toLog" />  
+    
+    <si:payload-type-router id="router" input-channel="input">
+    		<si:mapping type="java.lang.Integer" channel="integer"/>
+    		<si:mapping type="java.lang.String" channel="string"/>    
+    </si:payload-type-router>
+    
+    <bean id="integerLogger" class="cz.sweb.pichlik.MyLogger">
+    		<property name="type" value="i'm an integer logger"></property>
+    </bean>
+    
+    <bean id="stringLogger" class="cz.sweb.pichlik.MyLogger">
+    	    <property name="type" value="i' a string logger"></property>
+    </bean>
+    
+    	<si:poller max-messages-per-poll="1" id="defaultPoller" default="true">
+		<si:interval-trigger interval="100000" />
+	</si:poller>
+</beans>

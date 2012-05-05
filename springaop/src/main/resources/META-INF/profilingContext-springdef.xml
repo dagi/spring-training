@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"       
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       ">
+       
+  <aop:aspectj-autoproxy />
+  
+   <aop:config>
+      <aop:aspect ref="profilingAspect">
+
+         <aop:pointcut id="theExecutionOfSomeDaoMethod"
+                    expression="execution(* cz.sweb.pichlik.springaop.dao.UserStorageDao.*(..))"/>
+
+         <aop:around pointcut-ref="theExecutionOfSomeDaoMethod"
+                  method="tracingMethod"/>
+
+      </aop:aspect>
+   </aop:config>
+        
+  <bean id="profilingAspect" class="cz.sweb.pichlik.springaop.profiling.ProfilingAspectBean" />
+  
+  <!-- 
+   Target object. This bean simulates a user storage. The users are 
+   defined as list of inner beans.
+   -->
+  <bean class="cz.sweb.pichlik.springaop.dao.UserStorageDaoMock">
+    <property name="users">
+        <list>
+            <bean class="cz.sweb.pichlik.springaop.dao.User" p:id="1" p:name="U1" />
+            <bean class="cz.sweb.pichlik.springaop.dao.User" p:id="2" p:name="U2" />    
+        </list>
+    </property>
+  </bean>
+  
+</beans>

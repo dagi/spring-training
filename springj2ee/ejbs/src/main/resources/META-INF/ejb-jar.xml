@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ejb-jar xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/ejb-jar_2_1.xsd"
+	version="2.1" id="ejb-jar_ID">
+
+	<description>Book service EJB facade</description>
+	<display-name>ejbs</display-name>
+
+	<enterprise-beans>
+		<session>
+			<description>Book service EJB facade</description>
+			<ejb-name>ReservationServiceEJBFacade</ejb-name>
+			<local-home>cz.sweb.pichlik.ejb.ReservationServiceHome</local-home>
+			<local>cz.sweb.pichlik.ejb.ReservationServiceLocal</local>
+			<ejb-class>cz.sweb.pichlik.ejb.ReservationServiceEJBFacade</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			  
+			<env-entry>
+				<env-entry-name>ejb/BeanFactoryPath</env-entry-name>
+				<env-entry-type>java.lang.String</env-entry-type>
+				<env-entry-value>classpath*:META-INF/businessContext.xml</env-entry-value>
+			</env-entry>
+		</session>
+
+
+	</enterprise-beans>
+
+</ejb-jar>
