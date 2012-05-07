@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+        targetNamespace="http://dagblog.cz/BookReservation" 
+        xmlns:rs="http://dagblog.cz/BookReservation">
+
+    <element name="BookReservationRequest">
+      <complexType>
+        <all>
+          <element name="bookId" type="long"/>
+        </all>
+       </complexType>
+    </element>
+
+    <element name="BookReservationResponse">
+        <complexType>
+            <all>
+              <element ref="rs:Book"/>
+            </all>
+        </complexType>
+    </element>
+
+    <element name="Book">
+        <complexType>
+            <sequence>
+                <element name="id" type="long"/>
+                <element name="name" type="string"/>
+                <element name="author" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+
+</schema>

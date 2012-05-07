@@ -1,0 +1,47 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:schema="http://dagblog.cz/BookReservation/schema"
+                  xmlns:rs="http://dagblog.cz/BookReservation"
+                  targetNamespace="http://dagblog.cz/BookReservation">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://dagblog.cz/BookReservation/schema"
+                schemaLocation="BookReservation.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="BookReservationRequest">
+        <wsdl:part element="schema:BookReservationRequest" name="BookReservationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="BookReservationResponse">
+        <wsdl:part element="schema:BookReservationResponse" name="BookReservationResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="BookReservationResource">
+        <wsdl:operation name="Book">
+            <wsdl:input message="rs:BookReservationRequest" name="BookReservationRequest"/>
+            <wsdl:output message="rs:BookReservationResponse" name="BookReservationResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="BookReservationBinding" type="rs:BookReservationResource">
+        <soap:binding style="document" 
+            transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Book">
+            <soap:operation soapAction="http://dagblog.cz/BookReservation/Book"/>
+            <wsdl:input name="BookReservationRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="BookReservationResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="BookReservationService">
+        <wsdl:port binding="rs:BookReservationBinding" name="BookReservationResourcePort">
+            <soap:address location="http://localhost:8080/springws/ws/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
