@@ -8,4 +8,18 @@
 
     <context:annotation-config/>
     <context:component-scan base-package="cz.sweb.pichlik.impl"/>
+    
+    <bean id="preparedBooks" class="java.util.HashMap">
+        <constructor-arg>
+            <map key-type="java.lang.Long" value-type="cz.sweb.pichlik.Book">
+                <entry key="1">
+                    <bean class="cz.sweb.pichlik.impl.BookImpl">
+                        <constructor-arg value="1"/>
+                        <constructor-arg value="J2EE Development without EJB"/>
+                        <constructor-arg value="Rod Johnson"/>
+                    </bean>
+                </entry>
+            </map>
+        </constructor-arg>
+    </bean>
 </beans>

@@ -10,32 +10,87 @@
         </xsd:schema>
     </wsdl:types>
 
-    <wsdl:message name="BookReservationRequest">
-        <wsdl:part element="schema:BookReservationRequest" name="BookReservationRequest"/>
+    <wsdl:message name="ClaimReservationRequest">
+        <wsdl:part element="schema:ClaimReservationRequest" name="ClaimReservationRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="BookReservationResponse">
-        <wsdl:part element="schema:BookReservationResponse" name="BookReservationResponse"/>
+    <wsdl:message name="ClaimReservationResponse">
+        <wsdl:part element="schema:ClaimReservationResponse" name="ClaimReservationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ExistingReservationsRequest">
+        <wsdl:part element="schema:ExistingReservationsRequest" name="ExistingReservationsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="ExistingReservationsResponse">
+        <wsdl:part element="schema:ExistingReservationsResponse" name="ExistingReservationsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ExistingReservationRequest">
+        <wsdl:part element="schema:ExistingReservationRequest" name="ExistingReservationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="ExistingReservationResponse">
+        <wsdl:part element="schema:ExistingReservationResponse" name="ExistingReservationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelExistingReservationRequest">
+        <wsdl:part element="schema:CancelExistingReservationRequest" name="CancelExistingReservationRequest"/>
     </wsdl:message>
 
     <wsdl:portType name="BookReservationResource">
-        <wsdl:operation name="Book">
-            <wsdl:input message="rs:BookReservationRequest" name="BookReservationRequest"/>
-            <wsdl:output message="rs:BookReservationResponse" name="BookReservationResponse"/>
+        <wsdl:operation name="ClaimReservation">
+            <wsdl:input message="rs:Reservation" name="ClaimReservationRequest"/>
+            <wsdl:output message="rs:Reservation" name="ClaimReservationResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="ExistingReservations">
+            <wsdl:input name="ExistingReservationsRequest"/>
+            <wsdl:output message="rs:Reservations" name="ExistingReservationsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="ExistingReservation">
+            <wsdl:input message="rs:Reservation" name="ExistingReservationRequest"/>
+            <wsdl:output message="rs:Reservation" name="ExistingReservationResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="CancelExistingReservation">
+            <wsdl:input message="rs:Reservation" name="CancelExistingReservationRequest"/>
         </wsdl:operation>
     </wsdl:portType>
 
     <wsdl:binding name="BookReservationBinding" type="rs:BookReservationResource">
         <soap:binding style="document" 
             transport="http://schemas.xmlsoap.org/soap/http"/>
-        <wsdl:operation name="Book">
-            <soap:operation soapAction="http://dagblog.cz/BookReservation/Book"/>
-            <wsdl:input name="BookReservationRequest">
+        <wsdl:operation name="ClaimReservation">
+            <soap:operation soapAction="http://dagblog.cz/BookReservation/ClaimReservation"/>
+            <wsdl:input name="ClaimReservationRequest">
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="BookReservationResponse">
+            <wsdl:output name="ClaimReservationResponse">
                 <soap:body use="literal"/>
             </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ExistingReservations">
+            <soap:operation soapAction="http://dagblog.cz/BookReservation/ExistingReservations"/>
+            <wsdl:input name="ExistingReservationsRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ExistingReservationsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ExistingReservation">
+            <soap:operation soapAction="http://dagblog.cz/BookReservation/ExistingReservation"/>
+            <wsdl:input name="ExistingReservationRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ExistingReservationResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CancelExistingReservation">
+            <soap:operation soapAction="http://dagblog.cz/BookReservation/CancelExistingReservation"/>
+            <wsdl:input name="CancelExistingReservationRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
         </wsdl:operation>
     </wsdl:binding>
 

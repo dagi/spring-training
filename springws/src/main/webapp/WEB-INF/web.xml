@@ -15,8 +15,19 @@
         <servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>reservation-rest</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>reservation-ws</servlet-name>
         <url-pattern>/ws/*</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>reservation-rest</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -13,18 +13,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cz.sweb.pichlik.clientws.BookReservationClient;
+import cz.sweb.pichlik.clientws.BookReservationClientWS;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:META-INF/client/clientApplicationContext.xml")
-public class BookReservationClientTest {
+public class BookReservationClientWSTest {
 
     @Autowired
-    private BookReservationClient bookReservationClient;
+    private BookReservationClientWS bookReservationClient;
 
     @Test
     public void testBook() {
-        assertThat(bookReservationClient.book(1l), notNullValue());
+        assertThat(bookReservationClient.reserveBook(1L), notNullValue());
     }
 
 }
