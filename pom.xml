@@ -26,6 +26,7 @@
         <module>springdao</module>
         <module>sandboxioc</module>
         <module>springws</module>
+        <module>springtdd</module>
     </modules>
 
     <dependencies>
