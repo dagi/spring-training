@@ -1,7 +1,3 @@
-/*
- * Copyright (C) 2007-2010, GoodData(R) Corporation. All rights reserved.
- */
-
 package cz.sweb.pichlik.clientrest;
 
 import java.net.URI;

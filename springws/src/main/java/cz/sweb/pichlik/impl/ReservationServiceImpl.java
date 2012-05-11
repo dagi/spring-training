@@ -32,6 +32,7 @@ public class ReservationServiceImpl implements ReservationService{
         ReservationImpl reservationImpl = new ReservationImpl();
         reservationImpl.setReservationId(counter.incrementAndGet());
         reservationImpl.setBookId(bookId);
+        resevations.put(reservationImpl.getReservationId(), reservationImpl);
         return reservationImpl;
     }
 

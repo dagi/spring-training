@@ -27,4 +27,8 @@ public class InMemoryBookStoreDao implements BookStoreDao{
     public void saveBook(Book book) {
         bookHolder.put(book.getId(), book);
     }
+
+    public void setBookHolder(Map<Long, Book> bookHolder) {
+        this.bookHolder = bookHolder;
+    }
 }

@@ -16,7 +16,7 @@ import cz.sweb.pichlik.ReservationService;
 public class ReservationServiceImpl implements ReservationService{
     private BookStoreDao bookStoreDao;
     private AtomicLong counter = new AtomicLong();
-    private Map<Long, Reservation> resevations = new HashMap<Long, Reservation>();
+    private Map<Long, Reservation> reservations = new HashMap<Long, Reservation>();
 
     @Override
     public Reservation reserveBook(Long bookId) {
@@ -27,17 +27,18 @@ public class ReservationServiceImpl implements ReservationService{
         ReservationImpl reservationImpl = new ReservationImpl();
         reservationImpl.setReservationId(counter.incrementAndGet());
         reservationImpl.setBookId(bookId);
+        reservations.put(reservationImpl.getReservationId(), reservationImpl);
         return reservationImpl;
     }
 
     @Override
     public List<Reservation> getReservations() {
-        return new ArrayList<Reservation>(resevations.values());
+        return new ArrayList<Reservation>(reservations.values());
     }
 
     @Override
     public Reservation getReservation(Long reservationId) {
-        Reservation reservation = resevations.get(reservationId);
+        Reservation reservation = reservations.get(reservationId);
         if(reservation == null) {
             throw new ReservationNotFoundException(reservationId);
         }
@@ -47,6 +48,10 @@ public class ReservationServiceImpl implements ReservationService{
     @Override
     public void removeReservation(Long reservationId) {
         Reservation reservation = getReservation(reservationId);
-        resevations.remove(reservation);
+        reservations.remove(reservation);
+    }
+
+    public void setBookStoreDao(BookStoreDao bookStoreDao) {
+        this.bookStoreDao = bookStoreDao;
     }
 }
