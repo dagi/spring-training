@@ -12,12 +12,5 @@
     <mvc:annotation-driven/>
 
     <context:component-scan base-package="cz.sweb.pichlik.rest"/>
-    
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-        <property name="messageConverters">
-            <list>
-                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>
-            </list>
-        </property>
-    </bean>
+
 </beans>
