@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sch:ExistingReservationsRequest xmlns:sch="http://dagblog.cz/BookReservation/schema">
+      </sch:ExistingReservationsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
