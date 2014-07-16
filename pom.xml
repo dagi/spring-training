@@ -27,6 +27,7 @@
         <module>sandboxioc</module>
         <module>springws</module>
         <module>springtdd</module>
+        <module>springtx</module>
     </modules>
 
     <dependencies>
